@@ -1,10 +1,9 @@
 require(ggplot2)
 df<-Titanic_df where sex is not null
-ggplot(data=df,aes(x=as.numeric(as.character(AGE)), y=as.numeric(as.character(FARE)), color=SEX)) + 
+ggplot(data=df,aes(x=SEX, y=as.numeric(as.character(FARE)), color=as.character(SURVIVED))) + 
   coord_cartesian() + 
-  scale_x_continuous() +
+  scale_x_discrete() +
   scale_y_continuous() +
   #facet_grid(SURVIVED) +
-  labs(title='Titanic',x="AGE", y=paste("Fare")) +
+  labs(title='Titanic',x="SURVIVED", y=paste("FARE")) +
   geom_point(stat="identity",position=position_jitter(width=.3, height=0))
-

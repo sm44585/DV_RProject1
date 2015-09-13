@@ -6,4 +6,3 @@ ggplot(data=Titanic_df,aes(x=as.numeric(as.character(AGE)), y=as.numeric(as.char
   #facet_grid(SURVIVED) +
   labs(title='Titanic',x="Age", y=paste("Fare")) +
   geom_point(stat="identity",position=position_jitter(width=.3, height=0))
-

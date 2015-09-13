@@ -4,28 +4,21 @@ author: "Spencer Muncey and Chenchao Zang"
 date: "September 10, 2015"
 output: html_document
 ---
-The RMS Titanic began her maiden voyage on April 10, 1912 and sank to the bottom of the ocean after hitting an iceberg 5 days later. To learn more about the Titanic, you can visit this page on [Wikipedia](https://en.wikipedia.org/wiki/RMS_Titanic). 
-
-The data set used to produce the following graphs contains information on almost 900 passengers of that fateful ship. Here is a subset of that data:
-
-```{r, echo=FALSE, tidy=TRUE}
-require("jsonlite")
-require("RCurl")
-# Change the USER and PASS below to be your UTEid
-Titanic_df <- data.frame(fromJSON(getURL(URLencode('129.152.144.84:5001/rest/native/?query="select * from TITANIC"'),httpheader=c(DB='jdbc:oracle:thin:@129.152.144.84:1521/PDBF15DV.usuniversi01134.oraclecloud.internal', USER='cs329e_sm44585', PASS='orcl_sm44585', MODE='native_mode', MODEL='model', returnDimensions = 'False', returnFor = 'JSON'), verbose = TRUE), ))
-summary(Titanic_df)
+#RMS Titanic
+The RMS Titanic began her maiden voyage on April 10, 1912 and sank to the bottom of the ocean after hitting an iceberg 5 days later. To learn more about the Titanic, you can visit this page on [Wikipedia](https://en.wikipedia.org/wiki/RMS_Titanic).  
+###Session Information
+Before we get started with showing the plots, here is some information about how my RStudio is set up
+```{r}
+sessionInfo()
 ```
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+###The Dataset
+The data set used to produce the following graphs contains information on almost 900 passengers of that fateful ship. Here is a subset and summary of that data:
 
 ```{r}
-summary(cars)
+source("../01 Data/Titanic_DataFrame.R", echo = TRUE)
 ```
 
-You can also embed plots, for example:
-
-```{r, echo=FALSE}
-plot(cars)
+###Plot 1: Fare and Age of Titanic Passengers broken down by gender
+```{r, fig.height=10, fig.width=10}
+source("../02 Visualizations/Age_Fare_Sex.R", echo = TRUE)
 ```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

@@ -1,5 +1,5 @@
 require(ggplot2)
-df<-Titanic_df where sex is not null
+df<-Titanic_NoNullSex_df
 ggplot(data=df,aes(x=SEX, y=as.numeric(as.character(FARE)), color=as.character(SURVIVED))) + 
   coord_cartesian() + 
   scale_x_discrete() +

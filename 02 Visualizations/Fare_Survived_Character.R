@@ -4,6 +4,5 @@ ggplot(data=df,aes(x=SEX, y=as.numeric(as.character(FARE)), color=as.character(S
   coord_cartesian() + 
   scale_x_discrete() +
   scale_y_continuous() +
-  #facet_grid(SURVIVED) +
   labs(title='Titanic',x="SURVIVED", y=paste("FARE")) +
   geom_point(stat="identity",position=position_jitter(width=.3, height=0))

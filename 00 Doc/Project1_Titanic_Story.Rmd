@@ -27,28 +27,148 @@ source("../01 Data/Titanic_NoNullSex_df.r", echo = FALSE)
 ```{r, fig.height=10, fig.width=10}
 source("../02 Visualizations/Age_Fare_Sex.R", echo = TRUE)
 ```
+Here is the R code used to produce this plot:
+```
+require(ggplot2)
+ggplot(data=Titanic_df,aes(x=as.numeric(as.character(AGE)), y=as.numeric(as.character(FARE)), color=SEX)) + 
+  coord_cartesian() + 
+  scale_x_continuous() +
+  scale_y_continuous() +
+  #facet_grid(SURVIVED) +
+  labs(title='Titanic',x="Age", y=paste("Fare")) +
+  geom_point(stat="identity",position=position_jitter(width=.3, height=0))
+```
+Here is the SQL statement used to produce this plot:
+```
+select * from Titanic;
 
+```
 ###Plot 2: Fare and Age of Titanic Passengers broken down by gender with no null sex
 ```{r, fig.height=10, fig.width=10}
 source("../02 Visualizations/Fare_Sex_Age_NoNull.R", echo = TRUE)
 ```
 
+Here is the R code used to produce this plot:
+```
+require(ggplot2)
+df<-Titanic_NoNullSex_df
+ggplot(data=df,aes(x=as.numeric(as.character(AGE)), y=as.numeric(as.character(FARE)), color=SEX)) + 
+  coord_cartesian() + 
+  scale_x_continuous() +
+  scale_y_continuous() +
+  #facet_grid(SURVIVED) +
+  labs(title='Titanic',x="Age", y=paste("Fare")) +
+  geom_point(stat="identity",position=position_jitter(width=.3, height=0))
+```
+Here is the SQL statement used to produce this plot:
+```
+select * from Titanic where SEX IS NOT NULL;
+
+```
 ###Plot 3: Fare and Survival of Titanic Passengers broken down by gender
 ```{r, fig.height=10, fig.width=10}
 source("../02 Visualizations/Fare_Survived_Character.R", echo = TRUE)
 ```
 
+Here is the R code used to produce this plot:
+```
+require(ggplot2)
+df<-Titanic_NoNullSex_df
+ggplot(data=df,aes(x=SEX, y=as.numeric(as.character(FARE)), color=as.character(SURVIVED))) + 
+  coord_cartesian() + 
+  scale_x_discrete() +
+  scale_y_continuous() +
+  labs(title='Titanic',x="SURVIVED", y=paste("FARE")) +
+  geom_point(stat="identity",position=position_jitter(width=.3, height=0))
+```
+Here is the SQL statement used to produce this plot:
+```
+select * from Titanic where SEX IS NOT NULL;
+
+```
 ###Plot 4: Fare and Survival of Titanic Passengers broken down by gender and passenger class
 ```{r, fig.height=10, fig.width=10}
 source("../02 Visualizations/Fare_Survived_Sex.R", echo = TRUE)
 ```
 
+Here is the R code used to produce this plot:
+```
+require(extrafont)
+ggplot() + 
+  coord_cartesian() + 
+  scale_x_discrete() +
+  scale_y_continuous() +
+  facet_grid(PCLASS~SURVIVED, labeller=label_both) +
+  labs(title='Titanic') +
+  labs(x="SURVIVED", y=paste("FARE")) +
+  layer(data=Titanic_NoNullSex_df, 
+        mapping=aes(x=as.character(SEX), y=as.numeric(as.character(FARE)), color=SEX), 
+        stat="identity", 
+        stat_params=list(), 
+        geom="point",
+        geom_params=list(), 
+        position=position_jitter(width=0.3, height=0)
+  )
+```
+Here is the SQL statement used to produce this plot:
+```
+select * from Titanic where SEX IS NOT NULL;
+
+```
 ###Plot 5: Fare and Age of Titanic Passengers broken down by gender
 ```{r, fig.height=10, fig.width=10}
 source("../02 Visualizations/Fare_Survived_Sex_Ten.r", echo = TRUE)
 ```
+Here is the R code used to produce this plot:
+```
+require(extrafont)
+ggplot() + 
+  coord_cartesian() + 
+  scale_x_discrete() +
+  scale_y_continuous() +
+  facet_grid(PCLASS~SURVIVED, labeller=label_both) +
+  labs(title='Titanic where age <= 10') +
+  labs(x="SURVIVED", y=paste("FARE")) +
+  layer(data=Titanic_Age_Less_Ten_df, 
+        mapping=aes(x=as.character(SEX), y=as.numeric(as.character(FARE)), color=SEX), 
+        stat="identity", 
+        stat_params=list(), 
+        geom="point",
+        geom_params=list(), 
+        position=position_jitter(width=0.3, height=0)
+  )
+```
+Here is the SQL statement used to produce this plot:
+```
+select * from Titanic where SEX IS NOT NULL AND AGE<=10;
 
+```
 ###Plot 6: Fare charged by gender and passenger class (new interesting plot)
 ```{r, fig.height=10, fig.width=10}
 source("../02 Visualizations/New_Interesting_plot.r", echo = TRUE)
+```
+
+Here is the R code used to produce this plot:
+```
+require(extrafont)
+ggplot() + 
+  coord_cartesian() + 
+  scale_x_discrete() +
+  scale_y_continuous() +
+  facet_grid(.~PCLASS) +
+  labs(title="Titanic fare's charged by class") +
+  labs(x="Gender", y=paste("FARE")) +
+  layer(data=Titanic_NoNullSex_df, 
+        mapping=aes(x=SEX, y=as.numeric(as.character(FARE)), color=SEX), 
+        stat="identity", 
+        stat_params=list(), 
+        geom="point",
+        geom_params=list(), 
+        position=position_jitter(width=0.3, height=0)
+  )
+```
+Here is the SQL statement used to produce this plot:
+```
+select * from Titanic where SEX IS NOT NULL;
+
 ```

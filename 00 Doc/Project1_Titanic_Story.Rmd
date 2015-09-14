@@ -17,8 +17,38 @@ The data set used to produce the following graphs contains information on almost
 ```{r}
 source("../01 Data/Titanic_DataFrame.R", echo = TRUE)
 ```
+<!--This piece of R code loads the other two datasets that are needed to produce the visualizations for the plots -->
+```{r, echo=FALSE}
+source("../01 Data/Titanic_Age_Less_Ten.r", echo = FALSE)
+source("../01 Data/Titanic_NoNullSex_df.r", echo = FALSE)
+```
 
 ###Plot 1: Fare and Age of Titanic Passengers broken down by gender
 ```{r, fig.height=10, fig.width=10}
 source("../02 Visualizations/Age_Fare_Sex.R", echo = TRUE)
+```
+
+###Plot 2: Fare and Age of Titanic Passengers broken down by gender with no null sex
+```{r, fig.height=10, fig.width=10}
+source("../02 Visualizations/Fare_Sex_Age_NoNull.R", echo = TRUE)
+```
+
+###Plot 3: Fare and Survival of Titanic Passengers broken down by gender
+```{r, fig.height=10, fig.width=10}
+source("../02 Visualizations/Fare_Survived_Character.R", echo = TRUE)
+```
+
+###Plot 4: Fare and Survival of Titanic Passengers broken down by gender and passenger class
+```{r, fig.height=10, fig.width=10}
+source("../02 Visualizations/Fare_Survived_Sex.R", echo = TRUE)
+```
+
+###Plot 5: Fare and Age of Titanic Passengers broken down by gender
+```{r, fig.height=10, fig.width=10}
+source("../02 Visualizations/Fare_Survived_Sex_Ten.r", echo = TRUE)
+```
+
+###Plot 6: Fare charged by gender and passenger class (new interesting plot)
+```{r, fig.height=10, fig.width=10}
+source("../02 Visualizations/New_Interesting_plot.r", echo = TRUE)
 ```

@@ -7,7 +7,7 @@ ggplot() +
   facet_grid(PCLASS~SURVIVED, labeller=label_both) +
   labs(title='Titanic where age <= 10') +
   labs(x="Survived", y=paste("Fare")) +
-  layer(data=Titanic_Age_Less_10_df, 
+  layer(data=Titanic_Age_Less_Ten_df, 
         mapping=aes(x=as.character(SEX), y=as.numeric(as.character(FARE)), color=SEX), 
         stat="identity", 
         stat_params=list(), 

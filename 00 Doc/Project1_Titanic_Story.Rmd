@@ -23,8 +23,14 @@ source("../01 Data/Titanic_DataFrame.R", echo = TRUE)
 source("../01 Data/Titanic_Age_Less_Ten.r", echo = FALSE)
 source("../01 Data/Titanic_NoNullSex_df.r", echo = FALSE)
 ```
+###How to Reproduce the following graphs:
+There are a total of 6 plots in this document. To reproduce them, you need to:
+
+1. Load three data frames from the 01 Data folder in our github repository.
+2. Run the Visualizations in the 02 Visualizaiton file  
 
 ###Plot 1: Fare and Age of Titanic Passengers broken down by gender
+This plot looks at the relationship between Fare and Age based on the gender of the passenger. This plot includes null gender values.
 ```{r, fig.height=10, fig.width=10}
 source("../02 Visualizations/Age_Fare_Sex.R", echo = TRUE)
 ```
@@ -44,6 +50,7 @@ select * from Titanic;
 
 ```
 ###Plot 2: Fare and Age of Titanic Passengers broken down by gender with no null sex
+This plot looks at the relationship between Fare and Age based on gender. This plot does not contain null values for gender.
 ```{r, fig.height=10, fig.width=10}
 source("../02 Visualizations/Fare_Sex_Age_NoNull.R", echo = TRUE)
 ```
@@ -65,6 +72,7 @@ select * from Titanic where SEX IS NOT NULL;
 
 ```
 ###Plot 3: Fare and Survival of Titanic Passengers broken down by gender
+This plot looks at the relationship between Fare and Survival based on gender. This plot does not include null gender values. 
 ```{r, fig.height=10, fig.width=10}
 source("../02 Visualizations/Fare_Survived_Character.R", echo = TRUE)
 ```
@@ -86,6 +94,7 @@ select * from Titanic where SEX IS NOT NULL;
 
 ```
 ###Plot 4: Fare and Survival of Titanic Passengers broken down by gender and passenger class
+This plot looks at the relationship of Fare and Survival through the lens of both gender and passenger class. Again, no null gender values are included in this plot.
 ```{r, fig.height=10, fig.width=10}
 source("../02 Visualizations/Fare_Survived_Sex.R", echo = TRUE)
 ```
@@ -114,7 +123,8 @@ Here is the SQL statement used to produce this plot:
 select * from Titanic where SEX IS NOT NULL;
 
 ```
-###Plot 5: Fare and Age of Titanic Passengers broken down by gender
+###Plot 5: Fare and Survival of Titanic Passengers 10 years or younger broken down by gender
+This plot looks at the Fare and Survival of passengers who are 10 years old or younger and breaks it down based on gender. This plot does not include null gender values nor any passenger who is 11 years old or older.
 ```{r, fig.height=10, fig.width=10}
 source("../02 Visualizations/Fare_Survived_Sex_Ten.r", echo = TRUE)
 ```
@@ -146,7 +156,7 @@ select * from Titanic where SEX IS NOT NULL AND AGE<=10;
 ```{r, fig.height=10, fig.width=10}
 source("../02 Visualizations/New_Interesting_plot.r", echo = TRUE)
 ```
-
+This new plot examines the relationship between Fare charged and what gender the passenger was. At the same time, this plot also looks at the relationship between Fare and passenger class. This plot confirms the idea that on average, the lower your class, the lower the fare you pay. 
 Here is the R code used to produce this plot:
 ```
 require(extrafont)

@@ -1,11 +1,12 @@
 ---
 title: "Project1 Titanic story"
 author: "Spencer Muncey and Chenchao Zang"
-date: "September 10, 2015"
+date: "September 15, 2015"
 output: html_document
 ---
 #RMS Titanic
-The RMS Titanic began her maiden voyage on April 10, 1912 and sank to the bottom of the ocean after hitting an iceberg 5 days later. To learn more about the Titanic, you can visit this page on [Wikipedia](https://en.wikipedia.org/wiki/RMS_Titanic).  
+The RMS Titanic began her maiden voyage on April 10, 1912 and sank to the bottom of the ocean after hitting an iceberg 5 days later. To learn more about the Titanic, you can visit this page on [Wikipedia](https://en.wikipedia.org/wiki/RMS_Titanic).
+
 ###Session Information
 Before we get started with showing the plots, here is some information about how my RStudio is set up
 ```{r}
@@ -34,7 +35,6 @@ ggplot(data=Titanic_df,aes(x=as.numeric(as.character(AGE)), y=as.numeric(as.char
   coord_cartesian() + 
   scale_x_continuous() +
   scale_y_continuous() +
-  #facet_grid(SURVIVED) +
   labs(title='Titanic',x="Age", y=paste("Fare")) +
   geom_point(stat="identity",position=position_jitter(width=.3, height=0))
 ```
@@ -56,7 +56,6 @@ ggplot(data=df,aes(x=as.numeric(as.character(AGE)), y=as.numeric(as.character(FA
   coord_cartesian() + 
   scale_x_continuous() +
   scale_y_continuous() +
-  #facet_grid(SURVIVED) +
   labs(title='Titanic',x="Age", y=paste("Fare")) +
   geom_point(stat="identity",position=position_jitter(width=.3, height=0))
 ```

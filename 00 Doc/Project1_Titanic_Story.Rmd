@@ -18,10 +18,11 @@ The data set used to produce the following graphs contains information on almost
 ```{r}
 source("../01 Data/Titanic_DataFrame.R", echo = TRUE)
 ```
-<!--This piece of R code loads the other two datasets that are needed to produce the visualizations for the plots -->
-```{r, echo=FALSE}
-source("../01 Data/Titanic_Age_Less_Ten.r", echo = FALSE)
-source("../01 Data/Titanic_NoNullSex_df.r", echo = FALSE)
+###Other data frames
+These other two data frames form the basis for the other 5 visualization plots: 
+```{r}
+source("../01 Data/Titanic_Age_Less_Ten.r", echo = TRUE)
+source("../01 Data/Titanic_NoNullSex_df.r", echo = TRUE)
 ```
 ###How to Reproduce the following graphs:
 There are a total of 6 plots in this document. To reproduce them, you need to:
@@ -102,6 +103,7 @@ source("../02 Visualizations/Fare_Survived_Sex.R", echo = TRUE)
 Here is the R code used to produce this plot:
 ```
 require(extrafont)
+require(ggplot2)
 ggplot() + 
   coord_cartesian() + 
   scale_x_discrete() +
@@ -131,6 +133,7 @@ source("../02 Visualizations/Fare_Survived_Sex_Ten.r", echo = TRUE)
 Here is the R code used to produce this plot:
 ```
 require(extrafont)
+require(ggplot2)
 ggplot() + 
   coord_cartesian() + 
   scale_x_discrete() +
@@ -156,10 +159,11 @@ select * from Titanic where SEX IS NOT NULL AND AGE<=10;
 ```{r, fig.height=10, fig.width=10}
 source("../02 Visualizations/New_Interesting_plot.r", echo = TRUE)
 ```
-This new plot examines the relationship between Fare charged and what gender the passenger was while simultaneously looking at the relationship between Fare and passenger class. This plot confirms the idea that on average, the lower your class, the lower the fare you pay. However, a rather surprising observation is that the difference in average price paid for second and third class is so small that it can be considered simliar; in other words, the average Fare charged for a second class passenger is similar, if not the same as the average Fare charged for a third class passenger. ALso, notice that for the first class passengers, the woman had significantly larger average fares than their male passengers.   
+This new plot examines the relationship between Fare charged and what gender the passenger was while simultaneously looking at the relationship between Fare and passenger class. This plot confirms the idea that on average, the lower your class, the lower the fare you pay. However, a rather surprising observation is that the difference in average price paid for second and third class is so small that it can be considered simliar; in other words, the average Fare charged for a second class passenger is similar, if not the same as the average Fare charged for a third class passenger. Also, notice that for the first class passengers, the women had significantly larger average fares than their male passengers.   
 Here is the R code used to produce this plot:
 ```
 require(extrafont)
+require(ggplot2)
 ggplot() + 
   coord_cartesian() + 
   scale_x_discrete() +

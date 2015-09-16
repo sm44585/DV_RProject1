@@ -1,5 +1,6 @@
 #This creates the graph showing out of male and female passengers aged 10 years old or younger, who survived the sinking by passenger class 
 require(extrafont)
+require(ggplot2)
 ggplot() + 
   coord_cartesian() + 
   scale_x_discrete() +

@@ -1,5 +1,6 @@
 #This creates the graph showing the fares charged for males and females by passenger class 
 require(extrafont)
+require(ggplot2)
 ggplot() + 
   coord_cartesian() + 
   scale_x_discrete() +
